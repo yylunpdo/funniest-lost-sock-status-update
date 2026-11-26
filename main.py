@@ -8,6 +8,8 @@ fully deterministic: the same line every run.
 
 import os
 
+MAX_CHARS = 120
+
 ENTRY = (
     "Day 30 in the glovebox. The car thinks I'm a spare tyre. "
     "I think I'm a hostage with great arch support."
@@ -15,8 +17,9 @@ ENTRY = (
 
 
 def main():
-    assert 1 <= len(ENTRY) <= 120, f"entry is {len(ENTRY)} chars, must be 1-120"
+    assert 1 <= len(ENTRY) <= MAX_CHARS, f"entry is {len(ENTRY)} chars, must be 1-{MAX_CHARS}"
     assert ENTRY.strip(), "entry must not be only whitespace"
+    assert "\n" not in ENTRY.strip(), "entry must be a single line"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(ENTRY)

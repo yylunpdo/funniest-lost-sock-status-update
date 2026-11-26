@@ -25,4 +25,6 @@ python3 main.py
 
 This writes the line to `/output/entry.txt`. Pure Python standard
 library, no dependencies, deterministic — every run writes the exact
-same line.
+same line. `main.py` also enforces the bounty gate itself before
+writing: the line must be 1–120 characters, non-blank, and a single
+line with no newline inside it.
